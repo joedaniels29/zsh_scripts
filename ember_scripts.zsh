@@ -68,7 +68,7 @@ function ember_rails_install(){
     cd frontend;
     rm -rf node_modules bower_components
     npm install; bower install;
-    ember build --environment=production;
+    node_modules/ember-cli/bin/ember build --environment=production;
     1;
 
     cp -r frontend/dist public

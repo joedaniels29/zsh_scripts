@@ -12,6 +12,8 @@ function git_init_gitignore(){
 public/assets
 .DS_Store
 .ember.pid
+node_modules/
+bower_components/
 
 /vendor/bundle
 /public/tests
@@ -29,9 +31,14 @@ Carthage.checkout/
 /tmp
 " >>| .gitignore
 
-
 }
 
+function git_setup(){
+  git_init_gitignore;
+  git init;
+  git add .
+  git commit -m "Initial commit"
+}
 
 function no_index_here(){
    touch .metadata_never_index;

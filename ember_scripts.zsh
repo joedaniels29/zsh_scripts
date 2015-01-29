@@ -1,4 +1,3 @@
-
 ember_apps=(
 /Users/josephdaniels/Projects/Work/resident-worklist/frontend
 /Users/josephdaniels/Projects/Work/VTE/frontend
@@ -6,17 +5,23 @@ ember_apps=(
 /Users/josephdaniels/Projects/Work/MRIProject/frontend
 /Users/josephdaniels/Projects/Work/GSSRegistration/frontend
 /Users/josephdaniels/Projects/Work/BiopsyProject/frontend
-/Users/josephdaniels/Projects/Work/MRIProject/frontend/
 )
 
 function _checkGit(){
   return $(git diff-index --name-only HEAD --);
 }
 
-function _kindof_relative_path(){
+
+
+function _shortened_pwd(){
   # returns path without ~/Projects/
   # good for paths relative to Projects/
-  return ${$(pwd)##$(cd; pwd)/Projects/}
+  return _shortened_path($(pwd))
+}
+function _shortened_path(){
+  # returns path without ~/Projects/
+  # good for paths relative to Projects/
+  return ${$1##$(cd; pwd)/Projects/}
 }
 function _check_repo_sanitation(){
   red='\033[0;31m'
@@ -25,7 +30,7 @@ function _check_repo_sanitation(){
 
   diff = _checkGit()
   if [ -z diff ]; then
-    echo "This app: ${red}${_kindof_relative_path()}${NC} has uncommitted work"
+    echo "This app: ${red}${_shortened_pwd()}${NC} has uncommitted work"
     echo $diff
     # echo "Commit ${cyan}(c)${NC},  Stash to put it off ${cyan}(s)${NC}, just continue (x) or abort ${cyan}(q)${NC}"
     echo "Stash to put it off ${cyan}(s)${NC}, just continue (x) or abort ${cyan}(q)${NC}"
@@ -71,25 +76,30 @@ function ember_each(){
 function ember_update(){
     print "Updating!"
     echo "installing global"
+    npm uninstall -g ember-cli
+    npm cache clean
+    bower cache clean
     npm install -g ember-cli
 
     echo "👍"
 
 
     for ember_app in $ember_apps; do
-
         cd $ember_app;
         echo "entering App: ${ember_app}"
         _check_repo_sanitation()
 
-        rm -rf node_modules bower_components dist
+        rm -rf node_modules bower_components dist tmp
         npm install --save-dev ember-cli
-        npm install;
-        bower install;
-        ember init
 
+        ember install;
+        ember init
     done
 
+    echo "Complete! Ran updates on:"
+    for e_a in $ember_apps; do
+      echo $e_a
+    done
 }
 
 

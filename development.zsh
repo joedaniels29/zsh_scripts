@@ -16,6 +16,7 @@ node_modules/
 bower_components/
 
 /vendor/bundle
+disabledServer/
 /public/tests
 
 #CocoaPods

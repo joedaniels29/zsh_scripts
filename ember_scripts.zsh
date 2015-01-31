@@ -151,6 +151,10 @@ function ember_rails_full_deploy(){
 function ember_rails_install(){
     rm -rf public;
     cd frontend;
+    if [[-d "disabledServer"]]; then
+      # go back to regular
+      ember_mock_data
+    fi
     rm -rf node_modules bower_components
     npm install; bower install;
     node_modules/ember-cli/bin/ember build $2;

@@ -39,8 +39,14 @@ function git_setup(){
   git init;
   git add .
   git commit -m "Initial commit"
+  if [ ! -z $1 ]; then
+    git_push_to_github $1
+  fi
 }
-
+function git_push_to_github(){
+  git remote add origin $1
+  git push origin master
+}
 function no_index_here(){
    touch .metadata_never_index;
 }

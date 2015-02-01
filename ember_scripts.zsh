@@ -141,10 +141,6 @@ function ember_rails_full_deploy(){
   ember_rails_install $1 --environment=production
 
   ./wariblizer.sh
-
-  # if(($# == 3)); then
-    # scp  $3:/tmp
-  # fi
 }
 
 

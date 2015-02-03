@@ -10,3 +10,15 @@ create_db_stack(){
     createdb -O$1 "${1}_production"
   fi
 }
+
+
+dump_schema(){
+  appname=""
+  if [[ -e config/application.name ]]; then
+    appname=$(cat config/application.name)
+  elif (($# > 1)); then
+    appname=$2
+  fi
+
+  pg_dump $1 -s > "${appname}_schema.sql"
+}

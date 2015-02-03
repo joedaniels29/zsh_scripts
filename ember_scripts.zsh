@@ -147,7 +147,7 @@ function ember_rails_full_deploy(){
 function ember_rails_install(){
     rm -rf public;
     cd frontend;
-    if [[-d "disabledServer"]]; then
+    if [[ -d "disabledServer" ]]; then
       # go back to regular
       ember_mock_data
     fi

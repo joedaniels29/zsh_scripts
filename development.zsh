@@ -17,7 +17,7 @@ bower_components/
 
 /vendor/bundle
 disabledServer/
-/public
+/public/
 
 #CocoaPods
 Pods/

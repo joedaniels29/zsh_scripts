@@ -7,6 +7,26 @@ ember_apps=(
 /Users/josephdaniels/Projects/Work/BiopsyProject/frontend
 )
 
+shared_bower=(
+"textillate"
+"animate.css"
+"Lettering.js"
+"momentjs"
+)
+
+shared_npm=(
+"ember-cli-font-awesome"
+"ember-cli-coffeescript"
+"ember-cli-ramdisk"
+"ember-cli-sass"
+"ember-pikaday"
+
+)
+
+
+
+
+
 function _checkGit(){
   return $(git diff-index --name-only HEAD --);
 }

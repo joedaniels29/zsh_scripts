@@ -129,7 +129,7 @@ function startServers(){
     cd frontend
     ember s --port $(expr 4000 + $1) --proxy http://d29.rad.jhmi.edu:$(expr 3000 + $1)/&  echo $! > .ember.pid
     1
-    open -a "Google Chrome"  "http://d29.rad.jhmi.edu:$(expr 4000 + $1)"
+    openChromeLocalPort  $(expr 4000 + $1)
 }
 
 

@@ -9,6 +9,6 @@ openChromeLocalPort(){
   openChromeAddress "http://d29.rad.jhmi.edu:$(expr 4000 + $1)"
 }
 
-enterVPN(){
-  osascript $(echo "${SCRIPTS_FOLDER}/open_vpn.js")
+openVPN(){
+  osascript $(echo "${JXA_FOLDER}/open_vpn.js")
 }

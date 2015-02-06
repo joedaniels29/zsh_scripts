@@ -1,0 +1,3 @@
+checkEnvironment(){
+  openVPN()
+}

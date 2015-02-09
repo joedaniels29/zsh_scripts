@@ -18,6 +18,7 @@ er_deploy(){
     echo $appname >! config/application.name
   fi
 
+  rm -rf ./*.war* > /dev/null
   er_deploymode > /dev/null
   ember_rails_install $1 --environment=production
   RAILS_RELATIVE_URL_ROOT="/$appname" RAILS_ENV=production jruby -J-XX:MaxPermSize=256m -S bundle exec rake assets:precompile
@@ -30,6 +31,8 @@ er_deploy(){
 
   if (($# > 1 )); then
     scp $newappname $2:/tmp
+    echo "uploading.... "
+    ssh $2 "/servers/glassfish/glassfish3/glassfish/bin/asadmin deploy --name=$appname --contextroot=$appname --force=true  /tmp/$newappname"
   fi
 
 

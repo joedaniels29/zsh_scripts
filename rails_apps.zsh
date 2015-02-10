@@ -47,5 +47,12 @@ er_devmode(){
   sed -e "s/$deployment_string//g" Gemfile >! _Gemfile;
   mv -f _Gemfile Gemfile
   bundle install
+}
 
+bundle_cleanupAllProjects(){
+  for rails_app in $rails_apps; do
+    cd $rails_app
+    bundle clean --force
+
+  done
 }

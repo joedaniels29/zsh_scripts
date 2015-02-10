@@ -12,3 +12,6 @@ openChromeLocalPort(){
 openVPN(){
   osascript $(echo "${JXA_FOLDER}/open_vpn.js")
 }
+osx_notify(){
+  osascript $(echo "${JXA_FOLDER}/notification.js") &> /dev/null
+}

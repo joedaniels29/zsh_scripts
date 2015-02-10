@@ -14,9 +14,10 @@ function jd_main(){
 
   //var safari = Application("Safari")
   //safari.activate()
-  delay(5)
+  delay(6)
   sp = se.processes.byName('Safari');
   se.keyCode(36)
+  
 }
 
 jd_main()

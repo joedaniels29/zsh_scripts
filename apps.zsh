@@ -6,7 +6,7 @@ openChromeAddress(){
 }
 
 openChromeLocalPort(){
-  openChromeAddress "http://d29.rad.jhmi.edu:$(expr 4000 + $1)"
+  openChromeAddress "http://d29.rad.jhmi.edu:${1}"
 }
 
 openVPN(){

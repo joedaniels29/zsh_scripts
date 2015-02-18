@@ -20,3 +20,4 @@ Carthage.checkout/
 /log/*.log
 /tmp
 
+*.pw.*

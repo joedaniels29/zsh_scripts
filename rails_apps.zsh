@@ -32,6 +32,9 @@ er_deploy(){
   if (($# > 1 )); then
     scp $newappname $2:/tmp
     echo "uploading.... "
+    echo "\n${gf_passwords[$2]}\n"|ssh -t $2  "/servers/glassfish/glassfish3/glassfish/bin/asadmin login"
+
+    ssh $2 "/servers/glassfish/glassfish3/glassfish/bin/asadmin undeploy $appname"
     ssh $2 "/servers/glassfish/glassfish3/glassfish/bin/asadmin deploy --name=$appname --contextroot=$appname --force=true  /tmp/$newappname"
   fi
 
@@ -41,12 +44,31 @@ er_deploymode(){
   if ! grep -Fxq $deployment_string Gemfile ; then
     echo $deployment_string >>| Gemfile
     RAILS_ENV=production jruby -J-XX:MaxPermSize=256m -S bundle install
+    remove_sdk
   fi
 }
+
+remove_sdk(){
+    trelawney_file_name=$(ruby $(echo "${RUBY_FOLDER}/locateGem.rb") "trelawney")
+    sdk_file_name="$(echo $trelawney_file_name)/lib/trelawney/harbinger-sdk-1.4.0-standalone.jar"
+    if [[ -e $sdk_file_name ]]; then
+          mv $sdk_file_name /tmp/
+    fi
+}
+
+restore_sdk(){
+  trelawney_file_name=$(ruby $(echo "${RUBY_FOLDER}/locateGem.rb") "trelawney")/lib/trelawney/harbinger-sdk-1.4.0-standalone.jar
+  fi_name="harbinger-sdk-1.4.0-standalone.jar"
+  if [[ -e /tmp/$fi_name ]]; then
+        mv /tmp/$fi_name  $trelawney_file_name
+  fi
+}
+
 er_devmode(){
   sed -e "s/$deployment_string//g" Gemfile >! _Gemfile;
   mv -f _Gemfile Gemfile
   bundle install
+  restore_sdk
 }
 
 bundle_cleanupAllProjects(){

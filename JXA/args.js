@@ -15,13 +15,3 @@ function myArgs(){
   return argv.slice(4)
 
 }
-
-function notify(){
-  var app = Application.currentApplication();
-  var ar = myArgs()
-  app.includeStandardAdditions = true
-  app.displayNotification(ar[0],
-  { withTitle: ar[1], subtitle: ar[2]})
-}
-
-notify();

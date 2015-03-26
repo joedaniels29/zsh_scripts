@@ -40,6 +40,16 @@ er_deploy(){
 
 
 }
+
+
+er_startup(){
+ bundle install;
+  cd frontend;
+  npm install;
+  bower install;
+  1;
+
+}
 er_deploymode(){
   if ! grep -Fxq $deployment_string Gemfile ; then
     echo $deployment_string >>| Gemfile

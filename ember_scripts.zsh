@@ -1,10 +1,10 @@
 ember_apps=(
-/Users/josephdaniels/Projects/Work/resident-worklist/frontend
-/Users/josephdaniels/Projects/Work/VTE/frontend
-/Users/josephdaniels/Projects/Work/ReachSearch/frontend
-/Users/josephdaniels/Projects/Work/MRIProject/frontend
-/Users/josephdaniels/Projects/Work/GSSRegistration/frontend
-/Users/josephdaniels/Projects/Work/BiopsyProject/frontend
+  ~/Projects/Work/resident-worklist/frontend
+  ~/Projects/Work/VTE/frontend
+  ~/Projects/Work/ReachSearch/frontend
+  ~/Projects/Work/MRIProject/frontend
+  ~/Projects/Work/GSSRegistration/frontend
+  ~/Projects/Work/BiopsyProject/frontend
 )
 
 shared_bower=(
@@ -20,11 +20,22 @@ shared_npm=(
 "ember-cli-ramdisk"
 "ember-cli-sass"
 "ember-pikaday"
-
 )
 
+function if_thing(){
+   echo "current Version: $(ember -v)"
+   select var in Yes No; do
+    case $var in
+      Yes)
+       exit
+       ;;
+      No)
+       break;;
+    esac
+    echo "Yu said: $var"
+   done
 
-
+}
 
 
 function _checkGit(){
@@ -55,16 +66,17 @@ function _check_repo_sanitation(){
     # echo "Commit ${cyan}(c)${NC},  Stash to put it off ${cyan}(s)${NC}, just continue (x) or abort ${cyan}(q)${NC}"
     echo "Stash to put it off ${cyan}(s)${NC}, just continue (x) or abort ${cyan}(q)${NC}"
 
-    select yn in "Yes" "No"; do
+    select yn in "stash" "continue" "stop"; do
       case $yn in
         # [cC]* ) echo "; break;;
-        [sS]* ) git stash; break;;
-        [xX]* ) break;;
-        [qQ]* ) exit;;
+        stash) git stash; break;;
+        contine) break;;
+        no) echo -1; break;;
       esac
     done
   fi
 }
+
 function ember_each(){
   red='\033[0;31m'
   cyan='\033[0;36m'
@@ -92,22 +104,56 @@ function ember_each(){
 
 
 
+function ember_version(){
+  ember -v | ruby -e 'puts STDIN.read.to_s.split("\n").select{|a|a.match("version: ")}.first.sub("version: ","")'
+}
 
 function ember_update(){
-    print "Updating!"
-    echo "installing global"
-    npm uninstall -g ember-cli
-    npm cache clean
-    bower cache clean
-    npm install -g ember-cli
+    print "EMBER FULL UPDATE"
 
+    npm cache clean >&-
+    bower cache clean >&-
+    echo "cache cleaned"
+    if !command -v ember 2>/dev/null; then
+      npm install ember-cli
+    else
+     echo "Want to install global?"
+     echo current Version: $( ember_version )
+     select var in Yes No; do
+      case $var in
+        Yes)
+         npm uninstall -g ember-cli < /dev/null
+         npm install -g ember-cli < /dev/null
+         echo "installed global";
+         break;;
+        No)
+         break;;
+      esac
+      echo "please, yes or no"
+     done
+    fi
     echo "👍"
 
-
+    newVersion=$( ember_version )
     for ember_app in $ember_apps; do
         cd $ember_app;
-        echo "entering App: ${ember_app}"
-        _check_repo_sanitation()
+        echo "entering App: $ember_app"
+        appVersion=$( ember_version )
+
+        if [ "$appVersion" -eq "$newVersion" ]; then
+
+         echo "app reports already using version $newVersion, skip?"
+
+         select response in Skip Dont; do
+          case $response in
+           Skip) break;;
+           Dont) break;;
+
+         esac
+        done
+        fi
+
+        if (( $(_check_repo_sanitation()) == 0 )); then; return; fi;
 
         rm -rf node_modules bower_components dist tmp
         npm install --save-dev ember-cli

@@ -1,10 +1,10 @@
 ember_apps=(
-/Users/josephdaniels/Projects/Work/resident-worklist/frontend
-/Users/josephdaniels/Projects/Work/VTE/frontend
-/Users/josephdaniels/Projects/Work/ReachSearch/frontend
-/Users/josephdaniels/Projects/Work/MRIProject/frontend
-/Users/josephdaniels/Projects/Work/GSSRegistration/frontend
-/Users/josephdaniels/Projects/Work/BiopsyProject/frontend
+/Users/joe/Projects/Work/resident-worklist/frontend
+/Users/joe/Projects/Work/VTE/frontend
+/Users/joe/Projects/Work/ReachSearch/frontend
+/Users/joe/Projects/Work/MRIProject/frontend
+/Users/joe/Projects/Work/GSSRegistration/frontend
+/Users/joe/Projects/Work/BiopsyProject/frontend
 )
 
 shared_bower=(

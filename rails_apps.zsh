@@ -1,13 +1,13 @@
 
 rails_apps=(
-/Users/josephdaniels/Projects/Work/resident-worklist/
-/Users/josephdaniels/Projects/Work/VTE/
-/Users/josephdaniels/Projects/Work/ReachSearch/
-/Users/josephdaniels/Projects/Work/MRIProject/
-/Users/josephdaniels/Projects/Work/GSSRegistration/frontend
+/Users/joe/Projects/Work/resident-worklist/
+/Users/joe/Projects/Work/VTE/
+/Users/joe/Projects/Work/ReachSearch/
+/Users/joe/Projects/Work/MRIProject/
+/Users/joe/Projects/Work/GSSRegistration/frontend
 )
 
-deployment_string="group(:production){ gem 'jruby-openssl', '0.8.8';}"
+deployment_string="group(:production){ gem 'jruby-openssl', '0.8.8', :require => false;}"
 
 er_deploy(){
   appname=$(cat config/application.name)

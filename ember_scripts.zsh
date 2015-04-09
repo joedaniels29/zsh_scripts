@@ -3,8 +3,6 @@ ember_apps=(
 /Users/joe/Projects/Work/VTE/frontend
 /Users/joe/Projects/Work/ReachSearch/frontend
 /Users/joe/Projects/Work/MRIProject/frontend
-/Users/joe/Projects/Work/GSSRegistration/frontend
-/Users/joe/Projects/Work/BiopsyProject/frontend
 )
 
 shared_bower=(

@@ -7,7 +7,7 @@ rails_apps=(
 /Users/joe/Projects/Work/GSSRegistration/frontend
 )
 
-deployment_string="group(:production){ gem 'jruby-openssl', '0.8.8', :require => false;}"
+deployment_string="group(:production){ gem 'jruby-openssl', '0.8.8'}"
 
 er_deploy(){
   appname=$(cat config/application.name)
@@ -18,17 +18,17 @@ er_deploy(){
     echo $appname >! config/application.name
   fi
 
-  er_deploymode > /dev/null
+
   RAILS_ENV=production jruby -J-XX:MaxPermSize=256m -S bundle install &
   piddy1=$!
   ember_rails_install $1 --environment=production
   wait $piddy1
-  RAILS_RELATIVE_URL_ROOT="/$appname" RAILS_ENV=production jruby -J-XX:MaxPermSize=256m -S bundle exec rake assets:precompile
-  RAILS_ENV=production  rails g trelawney:deployment
+  # RAILS_RELATIVE_URL_ROOT="/$appname" RAILS_ENV=production jruby -J-XX:MaxPermSize=256m -S bundle exec rake assets:precompile
+  rails g trelawney:deployment
   # chmod +r "$appname.war"
 
   git checkout app/views/pages/_version.html.erb &
-  er_devmode > /dev/null
+
 
   if (($# > 1 )); then
     scp $newappname $2:/tmp

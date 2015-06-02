@@ -121,16 +121,30 @@ function ember_update(){
 }
 
 
+function startServersR(){
+ if [[ -z $1 ]]; then
+   echo "No port Supplied. Default to 3000/4000";
+   1=0;
+ fi
+ ember s --port $(expr 4000 + $1) --proxy http://d29.rad.jhmi.edu:$(expr 3000 + $1)/&  echo $! > .ember.pid
+}
 
+function startServersE(){
+ if [[ -z $1 ]]; then
+   echo "No port Supplied. Default to 3000/4000";
+   1=0;
+ fi
+ cd frontend
+ ember s --port $(expr 4000 + $1) --proxy http://d29.rad.jhmi.edu:$(expr 3000 + $1)/&  echo $! > .ember.pid
+ 1
+}
 function startServers(){
   if [[ -z $1 ]]; then
     echo "No port Supplied. Default to 3000/4000";
     1=0;
   fi
-    rails s -p$(expr 3000 + $1)&
-    cd frontend
-    ember s --port $(expr 4000 + $1) --proxy http://d29.rad.jhmi.edu:$(expr 3000 + $1)/&  echo $! > .ember.pid
-    1
+    startServersR $1
+    startServersE $1
     openChromeLocalPort  $(expr 4000 + $1)
 }
 

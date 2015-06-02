@@ -71,3 +71,19 @@ bundle_cleanupAllProjects(){
 
   done
 }
+
+
+staRSe(){
+ cd "${WORK_PROJECTS_FOLDER}/ReachSearch/frontend"
+ startServersE 378
+}
+
+staRSr(){
+ cd "${WORK_PROJECTS_FOLDER}/ReachSearch"
+ startServersR 378
+}
+
+staRS(){
+ cd "${WORK_PROJECTS_FOLDER}/ReachSearch"
+ startServers 378
+}

@@ -18,7 +18,6 @@ shared_npm=(
 "ember-cli-ramdisk"
 "ember-cli-sass"
 "ember-pikaday"
-
 )
 
 
@@ -82,10 +81,6 @@ function ember_each(){
     cd $ember_app
 
   done
-
-
-
-
 }
 
 
@@ -138,6 +133,7 @@ function startServersE(){
  ember s --port $(expr 4000 + $1) --proxy http://d29.rad.jhmi.edu:$(expr 3000 + $1)/&  echo $! > .ember.pid
  1
 }
+
 function startServers(){
   if [[ -z $1 ]]; then
     echo "No port Supplied. Default to 3000/4000";

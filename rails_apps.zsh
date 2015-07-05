@@ -23,23 +23,8 @@ er_deploy(){
   piddy1=$!
   ember_rails_install $1 --environment=production
   wait $piddy1
-  # RAILS_RELATIVE_URL_ROOT="/$appname" RAILS_ENV=production jruby -J-XX:MaxPermSize=256m -S bundle exec rake assets:precompile
-  rails g trelawney:deployment
-  # chmod +r "$appname.war"
 
-  git checkout app/views/pages/_version.html.erb &
-
-
-  if (($# > 1 )); then
-    scp $newappname $2:/tmp
-    echo "uploading.... "
-    echo "\n${gf_passwords[$2]}\n"|ssh -t $2  "/servers/glassfish/glassfish3/glassfish/bin/asadmin login"
-
-    ssh $2 "/servers/glassfish/glassfish3/glassfish/bin/asadmin undeploy $appname"
-    ssh $2 "/servers/glassfish/glassfish3/glassfish/bin/asadmin deploy --name=$appname --contextroot=$appname --force=true  /tmp/$newappname"
-  fi
-
-
+  # git checkout app/views/pages/_version.html.erb &
 }
 
 
@@ -74,7 +59,7 @@ bundle_cleanupAllProjects(){
 
 
 staRSe(){
- cd "${WORK_PROJECTS_FOLDER}/ReachSearch/frontend"
+ cd "${WORK_PROJECTS_FOLDER}/ReachSearch"
  startServersE 378
 }
 
@@ -86,4 +71,9 @@ staRSr(){
 staRS(){
  cd "${WORK_PROJECTS_FOLDER}/ReachSearch"
  startServers 378
+}
+
+trelawney_update(){
+  bundle update trelawney;
+  rails g trelawney:rvmrc;
 }

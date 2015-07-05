@@ -1,6 +1,5 @@
 ember_apps=(
 /Users/joe/Projects/Work/resident-worklist/frontend
-/Users/joe/Projects/Work/VTE/frontend
 /Users/joe/Projects/Work/ReachSearch/frontend
 /Users/joe/Projects/Work/MRIProject/frontend
 )
@@ -121,7 +120,7 @@ function startServersR(){
    echo "No port Supplied. Default to 3000/4000";
    1=0;
  fi
- ember s --port $(expr 4000 + $1) --proxy http://d29.rad.jhmi.edu:$(expr 3000 + $1)/&  echo $! > .ember.pid
+ rails s -p$(expr 3000 + $1) &
 }
 
 function startServersE(){

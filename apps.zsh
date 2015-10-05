@@ -15,3 +15,6 @@ openVPN(){
 osx_notify(){
   osascript $(echo "${JXA_FOLDER}/notification.js") $3 $1 $2
 }
+openPostgreSQL(){
+ open -a Postgres -j
+}

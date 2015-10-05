@@ -158,7 +158,15 @@ function killServers(){
     1
   fi
 }
-
+function killEmber(){
+ if [ -a ".ember.pid" ]; then
+   kill $(cat .ember.pid)
+   rm -rf .ember.pid
+ else
+   killall ember
+   rm -rf .ember.pid
+ fi
+}
 
 function ember_mock_data(){
     mv disabledServer server;

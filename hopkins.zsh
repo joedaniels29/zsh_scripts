@@ -1,5 +1,9 @@
 checkEnvironment(){
   # todo: open postgres if its not already open?
+  if ! pgrep postgress >& - ; then
+    openPostgreSQL
+  fi
+  
   openVPN
 }
 

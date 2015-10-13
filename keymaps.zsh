@@ -19,4 +19,4 @@ bindkey -s '\eD' 'idea .^M'
 # refresh zsh
 bindkey -s '\er\er' 'zsh_reinit;^M'
 # Open ZSH config in atom.
-bindkey -s '\ea\ez¸' 'atom ~/.zsh_scripts;^M'
+bindkey -s '\ea\ez' 'atom ~/.zsh_scripts;^M'

@@ -18,3 +18,4 @@ osx_notify(){
 openPostgreSQL(){
  open -a Postgres -j
 }
+export EDITOR="atom -nw"

@@ -21,7 +21,11 @@ shared_npm=(
 
 
 
-
+function ember_install_run(){
+  npm install;
+  bower install;
+  ember s $*
+}
 
 function _checkGit(){
   return $(git diff-index --name-only HEAD --);

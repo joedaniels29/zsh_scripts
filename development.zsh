@@ -50,3 +50,17 @@ function git_push_to_github(){
 function no_index_here(){
    touch .metadata_never_index;
 }
+
+
+
+
+
+current_host_platform(){
+ if [[ "$(uname)" == "Darwin" ]]; then
+  echo "osx"
+  elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
+  echo "linux"
+  elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    echo "win"
+  fi
+}

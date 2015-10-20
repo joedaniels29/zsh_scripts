@@ -133,7 +133,7 @@ function startServersE(){
    1=0;
  fi
  cd frontend
- ember s --port $(expr 4000 + $1) --proxy http://d29.rad.jhmi.edu:$(expr 3000 + $1)/&  echo $! > .ember.pid
+ ember s --port $(expr 4000 + $1) --proxy http://$(hopkins_current_host):$(expr 3000 + $1)/&  echo $! > .ember.pid
  1
 }
 

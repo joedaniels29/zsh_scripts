@@ -7,7 +7,7 @@ bindkey -s '\eU' '^Ucd ..; ls^M'
 bindkey -s '\eu' '^Ucd ..; ^M'
 bindkey -s '\el' '^Uls ^M'
 
-bindkey -s '\es' '^Asudo ^E'
+bindkey -s '\eS' '^Asudo ^E'
 # refresh current dir
 bindkey -s '\eR' 'cd .^M rails s ^M'
 # open in atom
@@ -20,3 +20,6 @@ bindkey -s '\eD' 'idea .^M'
 bindkey -s '\er\er' 'zsh_reinit;^M'
 # Open ZSH config in atom.
 bindkey -s '\ea\ez' '~/.zsh_scripts; atom .;^M'
+
+# git status
+bindkey -s '\eg\es' 'git status^M'

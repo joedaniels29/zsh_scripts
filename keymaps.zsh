@@ -14,6 +14,8 @@ bindkey -s '\eR' 'cd .^M rails s ^M'
 bindkey -s '\eA' 'atom .^M'
 # Open folder in idea
 bindkey -s '\eD' 'idea .^M'
+# Open folder in stree
+bindkey -s '\eT' 'stree .^M'
 
 
 # refresh zsh

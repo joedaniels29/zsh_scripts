@@ -86,7 +86,7 @@ function ember_each(){
   # echo "confirm you want to run ${cyan}$1${NC} in ${red}EACH${NC} Ember Repo?"
   # select opt in "y" "n"; do
   #   if [ "$opt" = "y" ]; then
-  #     # echo done
+#     # echo done
   #     break;
   #     # exit
   #   elif [ "$opt" = "n" ]; then
@@ -113,26 +113,32 @@ function ember_update(){
 
     echo "👍"
 
-
-    for ember_app in $ember_apps; do
-        cd $ember_app;
-        echo "entering App: ${ember_app}"
-        _check_repo_sanitation()
-
-        rm -rf node_modules bower_components dist tmp
-        npm install --save-dev ember-cli
-
-        ember install;
-        ember init
-    done
-
-    echo "Complete! Ran updates on:"
-    for e_a in $ember_apps; do
-      echo $e_a
-    done
+    #
+    # for ember_app in $ember_apps; do
+    #     cd $ember_app;
+    #     echo "entering App: ${ember_app}"
+    #     _check_repo_sanitation()
+    #     ember_project_update
+    # done
+    #
+    # echo "Complete! Ran updates on:"
+    # for e_a in $ember_apps; do
+    #   echo $e_a
+    # done
+}
+function ember_current_update(){
+ ember_update;
+ ember_project_update;
+ ember s;
 }
 
+function ember_project_update(){
+         rm -rf node_modules bower_components dist tmp
+         npm install --save-dev ember-cli
 
+         async_ember_installs
+         ember init
+}
 function startServersR(){
  if [[ -z $1 ]]; then
    echo "No port Supplied. Default to 3000/4000";
@@ -193,7 +199,13 @@ function ember_real_data(){
     mv server disabledServer;
 }
 
-
+function async_ember_installs(){
+ npm install &
+ pid1=$!
+ bower install &
+ pid2=$!
+ wait $pid1 $pid2
+}
 function ember_rails_install(){
     rm -rf public;
     cd frontend;
@@ -202,11 +214,7 @@ function ember_rails_install(){
       ember_mock_data
     fi
     rm -rf node_modules bower_components
-    npm install &
-    pid1=$!
-    bower install &
-    pid2=$!
-    wait $pid1 $pid2
+    async_ember_installs
     node_modules/ember-cli/bin/ember build $2;
     1;
 

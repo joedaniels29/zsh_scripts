@@ -6,7 +6,12 @@ openChromeAddress(){
 }
 
 openChromeLocalPort(){
-  openChromeAddress "http://d29.rad.jhmi.edu:${1}"
+ if [ -f .root_address ];
+then
+ openChromeAddress "http://d29.rad.jhmi.edu:${1}/${cat .path_extension}"
+else
+ openChromeAddress "http://d29.rad.jhmi.edu:${1}/"
+fi
 }
 
 openVPN(){

@@ -36,6 +36,18 @@ sRSr(){
 sRS(){
  sServer "${WORK_PROJECTS_FOLDER}/reach-search" 325
 }
+# resident-worklist Launchers
+sRWe(){
+ sServerE "${WORK_PROJECTS_FOLDER}/resident-worklist" 321
+}
+
+sRWr(){
+ sServerR "${WORK_PROJECTS_FOLDER}/resident-worklist" 321
+}
+
+sRW(){
+ sServer "${WORK_PROJECTS_FOLDER}/resident-worklist" 321
+}
 
 sServer(){
  cd $1

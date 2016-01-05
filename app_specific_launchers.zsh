@@ -60,5 +60,5 @@ sServerE(){
 }
 sServerR(){
  cd $1
- startServersE $2
+ startServersR $2
 }

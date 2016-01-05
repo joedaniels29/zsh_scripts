@@ -26,15 +26,15 @@ sFN(){
 
 # reach-search Launchers
 sRSe(){
- sServerE "${WORK_PROJECTS_FOLDER}/reach-search" 325
+ sServerE "${WORK_PROJECTS_FOLDER}/ReachSearch" 325
 }
 
 sRSr(){
- sServerR "${WORK_PROJECTS_FOLDER}/reach-search" 325
+ sServerR "${WORK_PROJECTS_FOLDER}/ReachSearch" 325
 }
 
 sRS(){
- sServer "${WORK_PROJECTS_FOLDER}/reach-search" 325
+ sServer "${WORK_PROJECTS_FOLDER}/ReachSearch" 325
 }
 # resident-worklist Launchers
 sRWe(){

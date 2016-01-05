@@ -198,6 +198,9 @@ function ember_mock_data(){
 function ember_real_data(){
     mv server disabledServer;
 }
+function ember_clean(){
+    rm -rf dist tmp;
+}
 
 function async_ember_installs(){
  npm install &

@@ -5,6 +5,7 @@
 # Bindings
 bindkey -s '\eU' '^Ucd ..; ls^M'
 bindkey -s '\eu' '^Ucd ..; ^M'
+bindkey -s '\eh' '^Ucd ; ^M'
 bindkey -s '\el' '^Uls ^M'
 
 bindkey -s '\eS' '^Asudo ^E'
@@ -25,3 +26,17 @@ bindkey -s '\ea\ez' '~/.zsh_scripts; atom .;^M'
 
 # git status
 bindkey -s '\eg\es' 'git status^M'
+
+vcs-status() {
+  \print; zle accept-line;
+  if [ -d .git ]; then
+    git status --short
+  elif [ -d .svn ]; then
+    svn status
+  else
+    ls -la # use the "l" alias for ls
+  fi
+  zle accept-line
+}
+zle -N vcs-status
+bindkey '^ ' vcs-status

@@ -178,6 +178,7 @@ function killServers(){
        kill -9 $(cat .ember.pid) &>/dev/null || rm -f .ember.pid
      fi
     fi
+    1
   fi
 }
 

@@ -172,16 +172,15 @@ function killServers(){
   kill_rails
   if [ -d "frontend" ]; then
     cd frontend
-    if [ -a ".ember.pid" ]; then
-      kill $(cat .ember.pid)
-      rm -rf .ember.pid
-    else
-      killall ember
-      rm -rf .ember.pid
+    if [[ -a ".ember.pid" ]]; then
+     kill $(cat .ember.pid);
+     if [[ $? -ne 0 ]]; then
+       kill -9 $(cat .ember.pid) &>/dev/null || rm -f .ember.pid
+     fi
     fi
-    1
   fi
 }
+
 function killEmber(){
  if [ -a ".ember.pid" ]; then
    kill $(cat .ember.pid)

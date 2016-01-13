@@ -23,6 +23,7 @@ bindkey -s '\eT' 'stree .^M'
 bindkey -s '\er\er' 'zsh_reinit;^M'
 # Open ZSH config in atom.
 bindkey -s '\ea\ez' '~/.zsh_scripts; atom .;^M'
+bindkey -s '\eK\eK' 'killServers;^M'
 
 # git status
 bindkey -s '\eg\es' 'git status^M'

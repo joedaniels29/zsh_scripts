@@ -1,4 +1,5 @@
 # Widgetize
+bindkey -s '\er\ef' 'rm -rf '
 
 
 
@@ -10,7 +11,7 @@ bindkey -s '\el' '^Uls ^M'
 
 bindkey -s '\eS' '^Asudo ^E'
 # refresh current dir
-bindkey -s '\eR' 'cd .^M rails s ^M'
+bindkey -s '\eR' 'cd .^M'
 # open in atom
 bindkey -s '\eA' 'atom .^M'
 # Open folder in idea

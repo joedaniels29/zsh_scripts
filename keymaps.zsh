@@ -22,6 +22,9 @@ bindkey -s '\eT' 'stree .^M'
 
 # refresh zsh
 bindkey -s '\er\er' 'zsh_reinit;^M'
+bindkey -s '\eB\eB' 'bower install;^M'
+bindkey -s '\eN\eN' 'npm install;^M'
+bindkey -s '\eN\eB' 'npm install && bower install;^M'
 # Open ZSH config in atom.
 bindkey -s '\ea\ez' '~/.zsh_scripts; atom .;^M'
 bindkey -s '\eK\eK' 'killServers;^M'

@@ -13,7 +13,14 @@ gh_commit_push_publish(){
        git commit -am $1;
        git push origin
  }
- gh_clone_new(){
+ git_clone_into(){
         cd ~/Projects/Mine;
         git clone $1;
+        if [[ -a $1:t:r ]]; then
+         echo "cd ${1:t:r}"
+         cd $1:t:r
+        else
+         echo "command failed or dir:  \"${1:t:r}\" was just too wierd."
+        fi
+
   }

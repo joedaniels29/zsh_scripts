@@ -18,7 +18,7 @@ bindkey -s '\eA' 'atom .^M'
 bindkey -s '\eD' 'idea .^M'
 # Open folder in stree
 bindkey -s '\eT' 'stree .^M'
-bindkey -s '\eZ' 'open_xcode_project; ^M'
+bindkey -s '\eX\eC' 'open_xcode_project; ^M'
 
 
 # refresh zsh

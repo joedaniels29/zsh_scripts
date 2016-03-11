@@ -64,7 +64,7 @@ function all_update(){
   bower install
  }
  if [[ -e ./cartfile ]] {
-  carthage update
+  carthage update --no-use-binaries
  }
  if [[ -e ./Podfile ]] {
   pod update

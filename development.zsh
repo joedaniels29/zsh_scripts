@@ -53,6 +53,31 @@ function no_index_here(){
 
 
 
+function all_update(){
+ if [[ -e ./Gemfile ]] {
+  bundle install
+ }
+ if [[ -e ./package.json ]] {
+  npm install
+ }
+ if [[ -e ./bower.json ]] {
+  bower install
+ }
+ if [[ -e ./cartfile ]] {
+  carthage update
+ }
+ if [[ -e ./Podfile ]] {
+  pod update
+ }
+ if [[ -d ./frontend ]] {
+  cd frontend;
+  all_update
+  1
+ }
+}
+
+
+
 
 
 current_host_platform(){

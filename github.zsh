@@ -22,5 +22,22 @@ gh_commit_push_publish(){
         else
          echo "command failed or dir:  \"${1:t:r}\" was just too wierd."
         fi
-
+        open_xcode_project
   }
+
+open_xcode_project(){
+  if ls ./*.xcworkspace 1> /dev/null 2>&1; then
+   open *.xcworkspace;
+  elif ls ./*.xcodeproj 1> /dev/null 2>&1; then
+   open ./*.xcodeproj;
+  fi
+}
+# open_xcode_project(){
+
+# }
+
+gh_new_repo(){
+ curl -u "joedaniels29:${___gh_key}" https://api.github.com/user/repos -d "{\"name\":\"${PWD:t}\",\"description\":\"\"}"
+ git remote add origin "git@github.com:joedaniels29/${PWD:t}.git"
+ git push origin master
+}

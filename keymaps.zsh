@@ -18,6 +18,7 @@ bindkey -s '\eA' 'atom .^M'
 bindkey -s '\eD' 'idea .^M'
 # Open folder in stree
 bindkey -s '\eT' 'stree .^M'
+bindkey -s '\eZ' 'open_xcode_project; ^M'
 
 
 # refresh zsh
@@ -28,6 +29,9 @@ bindkey -s '\eN\eB' 'npm install && bower install;^M'
 # Open ZSH config in atom.
 bindkey -s '\ea\ez' '~/.zsh_scripts; atom .;^M'
 bindkey -s '\eK\eK' 'killServers;^M'
+
+
+bindkey -s '\eH\eB' 'hub browse;^M'
 
 # git status
 bindkey -s '\eg\es' 'git status^M'

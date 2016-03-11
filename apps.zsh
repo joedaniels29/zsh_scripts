@@ -1,3 +1,4 @@
+
 alias aa=atom .
 alias a=atom --wait
 alias ss='xcrun swift -sdk $(xcrun --show-sdk-path --sdk macosx)'
@@ -7,11 +8,11 @@ openChromeAddress(){
 
 openChromeLocalPort(){
  if [ -f .root_address ];
-then
- openChromeAddress "http://d29.rad.jhmi.edu:${1}/${cat .path_extension}"
-else
- openChromeAddress "http://d29.rad.jhmi.edu:${1}/"
-fi
+ then
+  openChromeAddress "http://d29.rad.jhmi.edu:${1}/${cat .path_extension}"
+ else
+  openChromeAddress "http://d29.rad.jhmi.edu:${1}/"
+ fi
 }
 
 openVPN(){
@@ -22,5 +23,10 @@ osx_notify(){
 }
 openPostgreSQL(){
  open -a Postgres -j
+}
+safe_open_idea(){
+ if [[ -d .idea ]]; then
+  idea $*
+ fi
 }
 export EDITOR="atom -nw"

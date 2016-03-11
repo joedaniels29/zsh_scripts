@@ -52,6 +52,7 @@ sRW(){
 sServer(){
  cd $1
  startServers $2
+ safe_open_idea .
 }
 
 sServerE(){

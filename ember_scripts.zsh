@@ -33,8 +33,7 @@ function ember_clean_install_run(){
 }
 
 function ember_install_run(){
-  npm install;
-  bower install;
+  async_ember_installs;
   ember s $*
 }
 

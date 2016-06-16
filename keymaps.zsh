@@ -21,7 +21,7 @@ bindkey -s '\eT' 'stree .^M'
 bindkey -s '\eX\eC' 'open_xcode_project; ^M'
 
 # update... whatever
-bindkey -s '\eU' 'all_update^M'
+bindkey -s '\eY' 'all_update^M'
 
 
 # refresh zsh

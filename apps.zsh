@@ -29,4 +29,4 @@ safe_open_idea(){
   idea $*
  fi
 }
-export EDITOR="atom -nw"
+export EDITOR="vim"

@@ -8,6 +8,7 @@ checkEnvironment(){
 }
 
 alias JRJ=jruby --1.9 -S
+alias JRJ=jruby --1.9 -S
 
 hopkins_current_host(){
   if [[ "$(hostname)" == "rad-ai-dev02" ]]; then
@@ -17,3 +18,5 @@ hopkins_current_host(){
    echo "d29.rad.jhmi.edu"
   fi
 }
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)

@@ -1,9 +1,10 @@
 ember_apps=(
 /Users/joe/Projects/Work/resident-worklist/frontend
 /Users/joe/Projects/Work/ReachSearch/frontend
-/Users/joe/Projects/Work/MRIProject/frontend
+/Users/Joe/Projects/Work/oasis/frontend
 )
-
+ember_addons=(~/Projects/*/ember-cli-*/ )
+all_embers=($ember_apps $ember_addons)
 shared_bower=(
 "textillate"
 "animate.css"
@@ -14,7 +15,7 @@ shared_bower=(
 shared_npm=(
 "ember-cli-font-awesome"
 "ember-cli-coffeescript"
-"ember-cli-ramdisk"
+"ember-cli-ramdisk"l
 "ember-cli-sass"
 "ember-pikaday"
 )
@@ -42,7 +43,7 @@ function ember_install_run(){
 }
 
 function _checkGit(){
-  return $(git diff-index --name-only HEAD --);
+  return $(git diff-index --quiet HEAD --);
 }
 
 
@@ -79,21 +80,13 @@ function _check_repo_sanitation(){
     done
   fi
 }
+
+
+
 function ember_each(){
   red='\033[0;31m'
   cyan='\033[0;36m'
   NC='\033[0m' # No Color
-  # echo "confirm you want to run ${cyan}$1${NC} in ${red}EACH${NC} Ember Repo?"
-  # select opt in "y" "n"; do
-  #   if [ "$opt" = "y" ]; then
-#     # echo done
-  #     break;
-  #     # exit
-  #   elif [ "$opt" = "n" ]; then
-  #     exit;
-  #   fi
-  #
-  # done
   for ember_app in $ember_apps; do
     cd $ember_app
 
@@ -104,39 +97,60 @@ function ember_each(){
 
 
 function ember_update(){
+    local shouldExit;
+    shouldExit=0;
+     for ember_app in $ember_apps; do
+         cd ${ember_app:h};
+         _checkGit
+         if [[ $?  -ne 0 ]]; then
+          echo ${ember_app:h};
+          shouldExit=1;
+         fi
+     done
+     for ember_app in $ember_addons; do
+         cd ${ember_app};
+         _checkGit
+         if [[ $?  -ne 0 ]]; then
+          echo $ember_app;
+          shouldExit=1;
+         fi
+     done
+   if [[ $shouldExit -eq 1 ]]; then
+    echo 'commit those repos and try again!!'
+    return 1
+   fi
+
     print "Updating!"
     echo "installing global"
     npm uninstall -g ember-cli
     npm cache clean
     bower cache clean
-    npm install -g ember-cli
+    npm install -g --save-dev ember-cli@$(npm show ember-cli version);
 
-    echo "👍"
+    for ember_app in $ember_apps; do
+        cd ${ember_app};
+        ember_project_update
+    done
+    for ember_app in $ember_addons; do
+        cd ${ember_app};
+        ember_project_update
+    done
 
-    #
-    # for ember_app in $ember_apps; do
-    #     cd $ember_app;
-    #     echo "entering App: ${ember_app}"
-    #     _check_repo_sanitation()
-    #     ember_project_update
-    # done
-    #
-    # echo "Complete! Ran updates on:"
-    # for e_a in $ember_apps; do
-    #   echo $e_a
-    # done
+    echo "Complete! Ran updates on:"
+    for e_a in $ember_apps; do
+      echo $e_a
+    done
+    for e_a in $ember_addons; do
+      echo $e_a
+    done
 }
-function ember_current_update(){
- ember_update;
- ember_project_update;
- ember s;
-}
+
 
 function ember_project_update(){
-         rm -rf node_modules bower_components dist tmp
-         npm install --save-dev ember-cli
+         rm -rf node_modules bower_components dist tmp;
+         npm install --save-dev ember-cli@$(npm show ember-cli version);
 
-         async_ember_installs
+         async_ember_installs;
          ember init
 }
 function startServersR(){
@@ -205,7 +219,7 @@ function ember_clean(){
 function async_ember_installs(){
  npm install &
  pid1=$!
- bower install &
+ bower install & --config.interactive=false
  pid2=$!
  wait $pid1 $pid2
 }

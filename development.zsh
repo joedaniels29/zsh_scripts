@@ -76,7 +76,13 @@ function all_update(){
  }
 }
 
+reinstall_alcatraz(){
+ curl -fsSL https://raw.githubusercontent.com/supermarin/Alcatraz/deploy/Scripts/install.sh | sh;
+}
 
+clear_derived_data(){
+ rm -rf /Users/Joe/Library/Developer/Xcode/DerivedData
+}
 
 
 

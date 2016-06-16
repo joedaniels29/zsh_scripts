@@ -22,16 +22,12 @@ shared_npm=(
 
 
 function ember_clean(){
- if [[ ! -d app ]]; then
-  return
- fi
- rm -rf node_modules bower_components
+
+ rm -rf node_modules bower_components dist tmp
 }
 
 function ember_clean_install_run(){
-  if [[ ! -d app ]]; then
-   return
-  fi
+
   ember_clean
   ember_install_run $*
 }

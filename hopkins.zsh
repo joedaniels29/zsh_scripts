@@ -18,5 +18,6 @@ hopkins_current_host(){
    echo "d29.rad.jhmi.edu"
   fi
 }
-
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+if [[ "$(uname)" == "Darwin" ]]; then
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+fi

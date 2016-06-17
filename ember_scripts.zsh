@@ -3,7 +3,7 @@ ember_apps=(
 /Users/joe/Projects/Work/ReachSearch/frontend
 /Users/Joe/Projects/Work/oasis/frontend
 )
-ember_addons=( ~/Projects/*(.N)/ember-cli-*(.N)/ )
+ember_addons=( ~/Projects/*/ember-cli-*/(.N) )
 all_embers=($ember_apps $ember_addons)
 shared_bower=(
 "textillate"

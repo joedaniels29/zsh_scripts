@@ -7,7 +7,8 @@ gh_commit_push_publish(){
        git add .
        git commit -am $1;
        git push origin master
- }
+}
+
  git_push_to_origin(){
        git add .;
        git commit -am $1;

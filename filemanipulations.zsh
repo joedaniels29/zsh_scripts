@@ -10,3 +10,10 @@ into(){
  mkdir -p $1;
  cd $1;
 }
+
+lgrep(){
+    local name=$1;
+    shift;
+    ls $* | grep $name
+
+}

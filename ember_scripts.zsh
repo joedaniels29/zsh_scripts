@@ -3,7 +3,7 @@ ember_apps=(
 /Users/joe/Projects/Work/ReachSearch/frontend
 /Users/Joe/Projects/Work/oasis/frontend
 )
-ember_addons=(~/Projects/*/ember-cli-*/ )
+ember_addons=( ~/Projects/*(.N)/ember-cli-*(.N)/ )
 all_embers=($ember_apps $ember_addons)
 shared_bower=(
 "textillate"
@@ -15,7 +15,7 @@ shared_bower=(
 shared_npm=(
 "ember-cli-font-awesome"
 "ember-cli-coffeescript"
-"ember-cli-ramdisk"l
+"ember-cli-ramdisk"
 "ember-cli-sass"
 "ember-pikaday"
 )

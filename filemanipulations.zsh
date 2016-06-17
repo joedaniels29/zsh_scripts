@@ -15,5 +15,4 @@ lgrep(){
     local name=$1;
     shift;
     ls $* | grep $name
-
 }

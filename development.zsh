@@ -25,6 +25,9 @@ GeneratedDocumentation/
 Carthage.checkout/
 /.bundle
 
+#ios injection Project
+iOSInjectionProject/
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /target

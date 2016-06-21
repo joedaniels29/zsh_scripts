@@ -7,6 +7,7 @@ close_devlelopment(){
     osx_quit postgres  &>/dev/null;
     osx_quit dash  &>/dev/null;
     osx_quit dropbox  &>/dev/null;
+    osx_quit SourceTree &>/dev/null;
     quitvpn  &>/dev/null;
     sudo purge  &>/dev/null;
 }

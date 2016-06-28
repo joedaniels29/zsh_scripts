@@ -4,6 +4,14 @@ close_devlelopment(){
     killall java  &>/dev/null;
     killall mongod  &>/dev/null;
     osx_quit $(current_xcode)  &>/dev/null;
+    osx_quit "Simulator"
+    osx_quit "Intellij IDEA"
+    osx_quit "Airmail"
+    osx_quit "Chrome"
+    osx_quit "HipChat"
+    osx_quit "Atom"
+    osx_quit "AppCode"
+    osx_quit "Fantastical"
     osx_quit postgres  &>/dev/null;
     osx_quit dash  &>/dev/null;
     osx_quit dropbox  &>/dev/null;

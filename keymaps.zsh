@@ -24,6 +24,12 @@ bindkey -s '\eX\eC' 'open_xcode_project; ^M'
 bindkey -s '\eY' 'all_update^M'
 
 
+# rvm use...
+bindkey -s '\er\es' 'rvm use system^M'
+bindkey -s '\er\ed' 'rvm use default^M'
+bindkey -s '\er\e3' 'ruby-2.3.1^M'
+
+
 # refresh zsh
 bindkey -s '\er\er' 'zsh_reinit;^M'
 bindkey -s '\eB\eB' 'bower install;^M'
@@ -40,7 +46,7 @@ bindkey -s '\eH\eB' 'hub browse;^M'
 bindkey -s '\eg\es' 'git status^M'
 
 vcs-status() {
-  \print; zle accept-line;
+  print; zle accept-line;
   if [ -d .git ]; then
     git status --short
   elif [ -d .svn ]; then

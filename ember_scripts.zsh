@@ -3,8 +3,6 @@ ember_apps=(
 /Users/joe/Projects/Work/ReachSearch/frontend
 /Users/Joe/Projects/Work/oasis/frontend
 )
-ember_addons=( ~/Projects/*/ember-cli-*/(.N) )
-all_embers=($ember_apps $ember_addons)
 shared_bower=(
 "textillate"
 "animate.css"
@@ -20,7 +18,9 @@ shared_npm=(
 "ember-pikaday"
 )
 
-
+function ember_most_recent_version(){
+    npm show ember-cli version
+}
 function ember_clean(){
 
  rm -rf node_modules bower_components dist tmp
@@ -120,7 +120,7 @@ function ember_update(){
     npm uninstall -g ember-cli
     npm cache clean
     bower cache clean
-    npm install -g --save-dev ember-cli@$(npm show ember-cli version);
+    npm install -g --save-dev ember-cli@$(ember_most_recent_version);
 
     for ember_app in $ember_apps; do
         cd ${ember_app};

@@ -8,6 +8,27 @@ gh_commit_push_publish(){
        git commit -am $1;
        git push origin master
 }
+gh_pages_initialize(){
+    ember build;
+    git remote add site  $2;
+    git add $1 && git commit -m "Initial $1 subtree commit";
+    git subtree push --prefix $1 site master
+}
+__gh_pages_publish(){
+    local dir=$(echo $1);
+    ember build;
+    shift;
+    git add $dir;
+
+    git commit -m $*;
+    git commit -am "all source related to previous commit: $*";
+
+    git subtree push --prefix $dir site master;
+    git push origin master;
+}
+gh_pages_publish(){
+    __gh_pages_publish dist $*
+}
 
  git_push_to_origin(){
        git add .;
@@ -62,21 +83,21 @@ git-all(){
 }
 
 
-git-all(){
-  unset rvm_project_rvmrc
-  local first_dir=$(pwd);
-  local all_git_projects=( ~/Projects/{Work,Mine}/*/.git(:h) );
-  local ccmd="$*";
-  for dir in $all_git_projects; do
-   mv -f ${dir}/.{,no}rvmrc 1> /dev/null 2>&1
-   # print "==> $dir <==";
-   cd $dir;
-   eval "$ccmd"
-   mv -f ${dir}/.{no,}rvmrc 1> /dev/null 2>&1
-  done;
-  export rvm_project_rvmrc=1
-  cd $first_dir
-}
+# git-all(){
+#   unset rvm_project_rvmrc
+#   local first_dir=$(pwd);
+#   local all_git_projects=( ~/Projects/{Work,Mine}/*/.git(:h) );
+#   local ccmd="$*";
+#   for dir in $all_git_projects; do
+#    mv -f ${dir}/.{,no}rvmrc 1> /dev/null 2>&1
+#    # print "==> $dir <==";
+#    cd $dir;
+#    eval "$ccmd"
+#    mv -f ${dir}/.{no,}rvmrc 1> /dev/null 2>&1
+#   done;
+#   export rvm_project_rvmrc=1
+#   cd $first_dir
+# }
 # git-check(){
 #   git-all "if [[ $0  -eq 1 ]]; then echo 'dirty'; fi "
 # }

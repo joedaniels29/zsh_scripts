@@ -1,0 +1,26 @@
+lw=('environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'history-substring-search' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'fasd' \
+  'homebrew' \
+  'osx' \
+  'ruby' \
+  'rails' \
+  'git' \
+  'node' \
+  'python' \
+  'syntax-highlighting' \
+  'tmux' \
+  'utility' \
+  'prompt')
+
+for i in $lw; do
+    echo $i
+    time (pmodload $i)
+done

@@ -27,7 +27,7 @@ bindkey -s '\eY' 'all_update^M'
 # rvm use...
 bindkey -s '\er\es' 'rvm use system^M'
 bindkey -s '\er\ed' 'rvm use default^M'
-bindkey -s '\er\e3' 'ruby-2.3.1^M'
+bindkey -s '\er\e3' 'rvm use ruby-2.3.1^M'
 
 
 # refresh zsh

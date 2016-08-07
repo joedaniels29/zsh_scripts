@@ -83,10 +83,29 @@ git-all(){
 }
 
 gh_cdn_add(){
-    ember build;
-    git remote add site  $2;
-    git add $1 && git commit -m "Initial $1 subtree commit";
-    git subtree push --prefix $1 site master
+    if (($# != 2)); then
+        echo need a file and a subdir
+        return ;
+    fi
+    local loc=$(pwd);
+    local from="$loc/$1"
+    local file="$CDN_FOLDER/$2"
+    if (( $(file_size_mb $1) > 10 )); then
+        echo "too big 😭"
+        return ;
+    fi
+    cd $CDN_FOLDER;
+
+    mkdir -p $2;
+    cp -f $from $file;
+    # cd $file(:h);
+    gh_commit_push_publish "Added: $file";
+    cd $loc
+    local url=https://raw.githubusercontent.com/joedaniels29/cdn/$file
+
+    echo $url | pbcopy
+    echo $url;
+    echo "its on the clipboard too!";
 }
 # git-all(){
 #   unset rvm_project_rvmrc

@@ -59,12 +59,12 @@ open_xcode_project(){
 # }
 
 gh_new_repo(){
-if [[ ! -d .git ]]; then
-    echo "ohai";
-fi
- curl -u "joedaniels29:${___gh_key}" https://api.github.com/user/repos -d "{\"name\":\"${PWD:t}\",\"description\":\"\"}"
- git remote add origin "git@github.com:joedaniels29/${PWD:t}.git"
- git push origin master
+    if [[ ! -d .git ]]; then
+        git_setup;
+    fi
+     curl -u "joedaniels29:${___gh_key}" https://api.github.com/user/repos -d "{\"name\":\"${PWD:t}\",\"description\":\"\"}"
+     git remote add origin "git@github.com:joedaniels29/${PWD:t}.git"
+     git push origin master
 }
 
 

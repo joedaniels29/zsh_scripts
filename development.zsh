@@ -75,7 +75,7 @@ function all_update(){
  if [[ -d ./frontend ]] {
   cd frontend;
   all_update
-  1
+  cd ..;
  }
 }
 

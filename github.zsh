@@ -82,7 +82,12 @@ git-all(){
   cd $first_dir
 }
 
-
+gh_cdn_add(){
+    ember build;
+    git remote add site  $2;
+    git add $1 && git commit -m "Initial $1 subtree commit";
+    git subtree push --prefix $1 site master
+}
 # git-all(){
 #   unset rvm_project_rvmrc
 #   local first_dir=$(pwd);

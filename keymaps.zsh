@@ -37,6 +37,7 @@ bindkey -s '\eN\eN' 'npm install;^M'
 bindkey -s '\eN\eB' 'npm install && bower install;^M'
 # Open ZSH config in atom.
 bindkey -s '\ea\ez' '~/.zsh_scripts; atom .;^M'
+bindkey -s '\ea\et' '~/.tmuxinator; atom .;^M'
 bindkey -s '\eK\eK' 'killServers;^M'
 
 

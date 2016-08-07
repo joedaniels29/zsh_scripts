@@ -89,7 +89,7 @@ gh_cdn_add(){
     fi
     local loc=$(pwd);
     local from="$loc/$1"
-    local file="$CDN_FOLDER/$2"
+    local file=$CDN_FOLDER/$2/${1:t}
     if (( $(file_size_mb $1) > 10 )); then
         echo "too big 😭"
         return ;

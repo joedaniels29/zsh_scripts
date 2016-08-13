@@ -21,7 +21,7 @@ disabledServer/
 
 #CocoaPods
 Pods/
-GeneratedDocumentation/
+GpeneratedDocumentation/
 Carthage.checkout/
 /.bundle
 
@@ -40,7 +40,7 @@ iOSInjectionProject/
 function git_setup(){
     if [[  -d .git ]]; then
          echo "Go home, You're drunk";
-         return;
+             return;
      fi
   git_init_gitignore;
   git init;

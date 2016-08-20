@@ -43,6 +43,7 @@ bindkey -s '\eK\eK' 'killServers;^M'
 
 
 bindkey -s '\eH\eB' 'hub browse;^M'
+bindkey -s '\eG\eC' '^M gh_commit_push_publish ""^b'
 
 # git status
 bindkey -s '\eg\es' 'git status^M'

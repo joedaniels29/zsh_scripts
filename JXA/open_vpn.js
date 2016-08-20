@@ -3,7 +3,7 @@ function jd_main(){
   var se = Application('System Events')
   var app = Application('Junos Pulse');
   app.activate();
-  jps = se.processes.byName('Junos Pulse');
+  jps = se.processes.byName('Pulse Secure');
   var menuitem= jps.menuBars[0].menuBarItems.byName("File").menus[0].menuItems[0].menus[0].menuItems[0];
   if (menuitem.title() !="Connect"){
     // jps.windows[0].close()

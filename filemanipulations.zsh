@@ -8,7 +8,7 @@ send_to_server(){
 }
 into(){
  mkdir -p $1;
- cd $1;
+    cd $1;
 }
 
 lgrep(){

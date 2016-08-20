@@ -46,7 +46,7 @@ function git_setup(){
   git init;
   git add .
   git commit -m "Initial commit"
-  if [ ! -z $1 ]; then
+if [ ! -z $1 ]; then
     git_push_to_github $1
   fi
 }

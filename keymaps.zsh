@@ -17,7 +17,8 @@ bindkey -s '\eA' 'atom .^M'
 # Open folder in idea
 bindkey -s '\eD' 'idea .^M'
 # Open folder in stree
-bindkey -s '\eT' 'stree .^M'
+bindkey -s '\eS\eT' 'stree .^M'
+bindkey -s '\eT' '^Mtmuxinator new '
 bindkey -s '\eX\eC' 'open_xcode_project; ^M'
 
 # update... whatever

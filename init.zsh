@@ -10,7 +10,7 @@ export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 fpath=(~/.zsh/completions $fpath)
-if [[ -e $SCRIPTS_FOLDER/passwords.pw ]]; then
+if [[ -e ~/.bin/tmuxinator.zsh ]]; then
     source ~/.bin/tmuxinator.zsh
 fi
 

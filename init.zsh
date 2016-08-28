@@ -2,8 +2,9 @@ if [[ -e $SCRIPTS_FOLDER/passwords.pw ]]; then
      source "$SCRIPTS_FOLDER/passwords.pw";
 fi
 export SWIFTENV_ROOT=/usr/local/var/swiftenv
- if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
-
+if [[ "$(uname)" == "Darwin" ]]; then
+if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
+fi
 
 # path+=('/home/joe/npm/bin')
 # export PATH="$PATH:/Applications/VMware Fusion.app/Contents/Library"

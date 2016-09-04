@@ -10,6 +10,12 @@ MY_PROJECTS_FOLDER="${PROJECTS_FOLDER}/Mine"
 CDN_FOLDER="${MY_PROJECTS_FOLDER}/cdn"
 
 
+GITHUB_HTTP_URL="https://github.com/"
+GITHUB_HANDLE="joedaniels29"
+GITHB_HTTP_URL_ME="${GITHUB_HTTP_URL}/${GITHUB_HANDLE}"
+
+GITHUB_SSH_HOST='git@github.com'
+GITHB_SSH_ROOT="${GITHUB_SSH_HOST}:${GITHUB_HANDLE}"
 
 
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -17,3 +23,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
 elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
     WORK_PROJECTS_FOLDER="${HOME_FOLDER}/Projects"
 fi
+select x in *; do
+   echo $x
+done

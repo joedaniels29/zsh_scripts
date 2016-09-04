@@ -110,21 +110,48 @@ gh_cdn_add(){
     echo $url;
     echo "its on the clipboard too!";
 }
-# git-all(){
-#   unset rvm_project_rvmrc
-#   local first_dir=$(pwd);
-#   local all_git_projects=( ~/Projects/{Work,Mine}/*/.git(:h) );
-#   local ccmd="$*";
-#   for dir in $all_git_projects; do
-#    mv -f ${dir}/.{,no}rvmrc 1> /dev/null 2>&1
-#    # print "==> $dir <==";
-#    cd $dir;
-#    eval "$ccmd"
-#    mv -f ${dir}/.{no,}rvmrc 1> /dev/null 2>&1
-#   done;
-#   export rvm_project_rvmrc=1
-#   cd $first_dir
-# }
+
+gh_project_ssh(){
+  echo "${GITHB_SSH_ROOT}/$1.git"
+}
+
+gh_cd(){
+  local projects_for_name=( ~/Projects/*/*$1* );
+  if [[ -z  $projects_for_name ]]; then
+     git ls-remote $(gh_project_ssh $1) 1> /dev/null 2>&1
+     if (( $? == 0 )); then
+       cd $MY_PROJECTS_FOLDER;
+       hub clone "${GITHUB_HANDLE}/$1"
+       cd $1;
+    elif (( $? == 128 )); then
+      echo 'searchGithub? '
+    fi
+  else
+    print -l
+  fi
+
+
+
+
+}
+
+
+
+git-all(){
+  unset rvm_project_rvmrc
+  local first_dir=$(pwd);
+  local all_git_projects=( ~/Projects/{Work,Mine}/*/.git(:h) );
+  local ccmd="$*";
+  for dir in $all_git_projects; do
+   mv -f ${dir}/.{,no}rvmrc 1> /dev/null 2>&1
+   # print "==> $dir <==";
+   cd $dir;
+   eval "$ccmd"
+   mv -f ${dir}/.{no,}rvmrc 1> /dev/null 2>&1
+  done;
+  export rvm_project_rvmrc=1
+  cd $first_dir
+}
 # git-check(){
 #   git-all "if [[ $0  -eq 1 ]]; then echo 'dirty'; fi "
 # }

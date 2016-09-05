@@ -115,8 +115,9 @@ gh_project_ssh(){
   echo "${GITHB_SSH_ROOT}/$1.git"
 }
 
-gh_cd(){
-  local projects_for_name=( ~/Projects/*/*$1* );
+op(){
+  local projects_for_name=( ~/Projects/**(N)/*(N)$1*(Nom) );
+
   if [[ -z  $projects_for_name ]]; then
      git ls-remote $(gh_project_ssh $1) 1> /dev/null 2>&1
      if (( $? == 0 )); then
@@ -127,16 +128,28 @@ gh_cd(){
       echo 'searchGithub? '
     fi
   else
-    print -l
+    local ret;
+    if (( $#projects_for_name > 1 )); then
+      select l in $projects_for_name; do
+        if $l; then break; fi
+      done
+    else
+         ret=$projects_for_name
+    fi
+    cd $ret;
   fi
-
-
-
-
 }
 
+function _op(){
+  _values 'Project' ~/Projects/*/*/(:t)
+  return ret
+}
 
+compdef _op op
 
+gh_my_repos(){
+  curl -s "https://api.github.com/users/joedaniels29/repos?per_page=1000" | grep -o 'git@[^"]*'
+}
 git-all(){
   unset rvm_project_rvmrc
   local first_dir=$(pwd);

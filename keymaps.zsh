@@ -31,7 +31,7 @@ bindkey -s '\er\e3' 'rvm use ruby-2.3.1^M'
 
 
 # refresh zsh
-bindkey -s '\er\er' 'zsh_reinit;^M'
+bindkey -s '\er\er' '^A^kzsh_reinit;^M'
 bindkey -s '\eB\eB' 'bower install;^M'
 bindkey -s '\eN\eN' 'npm install;^M'
 bindkey -s '\eN\eB' 'npm install && bower install;^M'
@@ -44,6 +44,8 @@ bindkey -s '\eK\eK' 'killServers;^M'
 
 bindkey -s '\eH\eB' 'hub browse;^M'
 
+
+bindkey -s '\eO' '^A^kop  \t'
 # git status
 bindkey -s '\eg\es' 'git status^M'
 

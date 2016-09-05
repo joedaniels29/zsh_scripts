@@ -23,6 +23,3 @@ if [[ "$(uname)" == "Darwin" ]]; then
 elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
     WORK_PROJECTS_FOLDER="${HOME_FOLDER}/Projects"
 fi
-select x in *; do
-   echo $x
-done

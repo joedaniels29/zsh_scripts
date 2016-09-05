@@ -17,7 +17,8 @@ bindkey -s '\eA' 'atom .^M'
 # Open folder in idea
 bindkey -s '\eD' 'idea .^M'
 # Open folder in stree
-bindkey -s '\eT' 'stree .^M'
+bindkey -s '\eS\eT' 'stree .^M'
+bindkey -s '\eT' '^Mtmuxinator start '
 bindkey -s '\eX\eC' 'open_xcode_project; ^M'
 
 # update... whatever
@@ -43,6 +44,7 @@ bindkey -s '\eK\eK' 'killServers;^M'
 
 
 bindkey -s '\eH\eB' 'hub browse;^M'
+bindkey -s '\eG\eC' '^M gh_commit_push_publish ""^b'
 
 
 bindkey -s '\eO' '^A^kop  \t'

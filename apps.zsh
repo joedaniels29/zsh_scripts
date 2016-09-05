@@ -1,3 +1,10 @@
+# Customize to your needs...
+alias ss=sublime
+alias g=git
+alias SH="ssh harb"
+alias G='/Users/joe/Projects/Work/glassfish4/bin/asadmin'
+alias es="ember server"
+alias atomw='atom --wait'
 
 alias aa=atom .
 alias a=atom --wait

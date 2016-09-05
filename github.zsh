@@ -85,6 +85,16 @@ git-all(){
   cd $first_dir
 }
 
+gh_its_gonna_be_great(){
+    if (( $# != 1 ));
+    then return $(echo "need a directoryProject name.");
+    fi
+    into $MY_PROJECTS_FOLDER/$1
+    git_setup;
+    gh_new_repo;
+    cd $first_dir
+}
+
 gh_cdn_add(){
     if (($# != 2)); then
         echo need a file and a subdir

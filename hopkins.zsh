@@ -6,7 +6,7 @@ checkEnvironment(){
 
   openVPN
 }
-
+export CLASSPATH="$CLASSPATH:/Users/joe/Projects/Work/glassfish4/glassfish/lib/gf-client.jar:/Users/joe/Projects/Work/glassfish4/glassfish/lib/jndi-properties.jar:/Users/joe/Projects/Work/glassfish4/glassfish/lib/postgresql-9.2-1002.jdbc4.jar:/Users/joe/Projects/Work/glassfish4/glassfish/lib/sqljdbc4.jar"
 alias JRJ=jruby --1.9 -S
 alias JRJ=jruby --1.9 -S
 

@@ -19,10 +19,10 @@ matrix:
       env:  ZSH_VERSION=5.1
 
 install:
-    - ./bootstrap.travis.sh
+    - ./bootstrap.travis.ci
 script:
-  - ./source.travis.zsh
-  - ./shellcheck.travis.zsh
+  - ./source.travis.ci
+  - ./shellcheck.travis.ci
 
 notifications:
   email: true

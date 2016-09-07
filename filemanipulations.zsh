@@ -10,6 +10,10 @@ into(){
  mkdir -p $1;
     cd $1;
 }
+foldername(){
+     print $(pwd)(:t)
+}
+
 
 lgrep(){
     local name=$1;

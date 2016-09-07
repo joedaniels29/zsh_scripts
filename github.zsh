@@ -12,12 +12,17 @@ gh_commit_push_publish(){
            git tag -a $2 -m "$2"
            git push origin master --tags;
        fi
-
 }
 
 pod_commit_push_publish(){
-    gh_commit_push_publish $*;
-    pod trunk push *.podspec
+    if (( $# != 2 )); then
+        echo "you need a tag."
+        return ;
+    fi
+    local podspec=( *.podspec.erb );
+    erb version=$2 $podspec >! ${podspec:r};
+    gh_commit_push_publish $1 v$2;
+    pod trunk push ${podspec:r}
 }
 gh_pages_initialize(){
     ember build;
@@ -78,6 +83,15 @@ gh_new_repo(){
      git push origin master
 }
 
+
+git_init_readme(){
+    local name=$(pwd)(:t)
+    if [[ -z ./README* ]]; then
+
+
+
+    fi
+}
 
 
 git-all(){

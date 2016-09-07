@@ -6,7 +6,18 @@ npm_commit_push_publish(){
 gh_commit_push_publish(){
        git add .
        git commit -am $1;
+
        git push origin master
+       if (( $# == 2 )); then
+           git tag -a $2 -m "$2"
+           git push origin master --tags;
+       fi
+
+}
+
+pod_commit_push_publish(){
+    gh_commit_push_publish $*;
+    pod trunk push *.podspec
 }
 gh_pages_initialize(){
     ember build;
@@ -161,26 +172,28 @@ gh_my_repos(){
   curl -s "https://api.github.com/users/joedaniels29/repos?per_page=1000" | grep -o 'git@[^"]*'
 }
 git-all(){
-  unset rvm_project_rvmrc
+  unload_rvm
   local first_dir=$(pwd);
   local all_git_projects=( ~/Projects/{Work,Mine}/*/.git(:h) );
   local ccmd="$*";
   for dir in $all_git_projects; do
-   mv -f ${dir}/.{,no}rvmrc 1> /dev/null 2>&1
-   # print "==> $dir <==";
+   # print $fg[yellow] "==> ${dir:t} <==";
    cd $dir;
-   eval "$ccmd"
-   mv -f ${dir}/.{no,}rvmrc 1> /dev/null 2>&1
+   eval ${ccmd}
   done;
-  export rvm_project_rvmrc=1
+  load_rvm
   cd $first_dir
 }
-# git-check(){
-#   git-all "if [[ $0  -eq 1 ]]; then echo 'dirty'; fi "
-# }
+git-check(){
+  git-all "if [[ $0  -eq 1 ]]; then echo 'dirty'; fi "
+}
+git-check-list(){
+    autoload colors; colors;
+    print -n  $(git-all "eval \"$*\";"  'if [[ $?  -ne 0 ]]; then; print -n $fg_bold[blue] `pwd`(:t) ${reset_color}; else; print -n $fg[white] `pwd`(:t) ${reset_color}; fi;')
+}
 #
-# alias git-all-s="git-all git --no-pager status -sb"
-# alias git-all-l="git-all git --no-pager log --decorate --graph --oneline -n 3"
+alias git-all-s="git-all git --no-pager status -sb"
+alias git-all-l="git-all git --no-pager log --decorate --graph --oneline -n 3"
 # alias git-all-d="git-all git diff"
 # alias git-all-dc="git-all git diff --cached"
 # alias git-all-n="git-all npm ls"

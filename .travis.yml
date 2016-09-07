@@ -1,0 +1,32 @@
+
+language: objective-c
+matrix:
+  include:
+    - osx_image: xcode7.0
+      os: osx
+      sudo: required
+    - osx_image: xcode7.1
+      os: osx
+      sudo: required
+    - osx_image: xcode7.2b1
+      sudo: required
+      os: osx
+    - os: linux
+      sudo: required
+      env:  ZSH_VERSION=5.2
+    - os: linux
+      sudo: required
+      env:  ZSH_VERSION=5.1
+
+install:
+    - ./bootstrap.travis.sh
+script:
+  - ./source.travis.zsh
+  - ./shellcheck.travis.zsh
+
+notifications:
+  email: true
+
+branches:
+  only:
+    - master

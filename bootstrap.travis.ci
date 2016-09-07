@@ -1,0 +1,32 @@
+#!/bin/bash
+if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
+
+    # Install some custom requirements on OS X
+    # e.g. brew install pyenv-virtualenv
+
+    brew update;
+    brew install zsh;
+    brew install shellcheck;
+elif[[ $TRAVIS_OS_NAME == 'linux' ]];
+
+    export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
+    curl -L http://downloads.sourceforge.net/zsh/zsh-${ZSH_VERSION}.tar.gz | tar zx
+    cd zsh-${ZSH_VERSION}
+    ./configure --prefix=$LOCAL
+    make
+    make install
+    cd -
+    export PATH="$LOCAL/bin:$PATH"
+    wget "http://ftp.debian.org/debian/pool/main/s/shellcheck/shellcheck_0.3.7-5_amd64.deb"
+    sudo dpkg -i "shellcheck_0.3.7-5_amd64.deb"
+
+fi
+
+cat <<EOF | zsh -s
+
+git clone --recursive https://github.com/joedaniels29/prezto.git "${ZDOTDIR:-$HOME}/.zprezto";
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -fs "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+EOF

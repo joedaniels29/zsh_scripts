@@ -1,5 +1,5 @@
 #!/bin/env zsh
 
-for file in ~/.zsh_scripts/*.zsh; do
+for file in ./*.zsh; do
  . $file
 done

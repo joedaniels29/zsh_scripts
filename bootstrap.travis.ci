@@ -27,7 +27,7 @@ cd ~;
 git clone --recursive https://github.com/joedaniels29/prezto.git "${ZDOTDIR:-$HOME}/.zprezto";
 setopt EXTENDED_GLOB
 for rcfile in ~/.zprezto/runcoms/^README.md(.N); do
-  ln -fs "$rcfile" "~/.${rcfile:t}"
+  ln -fs "$rcfile" "/Users/travis/.${rcfile:t}"
 done
 
 EOF

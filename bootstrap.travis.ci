@@ -22,13 +22,4 @@ elif [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
 fi
 
-cat <<EOF | zsh -s
-cd ~;
-git clone --recursive https://github.com/joedaniels29/prezto.git "/Users/travis/.zprezto";
-setopt EXTENDED_GLOB
-print -l  ~/.zprezto/runcoms/^README.md(.N);
-for rcfile in ~/.zprezto/runcoms/^README.md(.N); do
-ln -fs "$rcfile" "/Users/travis/.${rcfile:t}"
-done
-
-EOF
+./zsh_config.travis.ci

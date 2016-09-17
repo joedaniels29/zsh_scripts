@@ -1,5 +1,6 @@
 
 language: sh
+sudo: required
 matrix:
   include:
     - osx_image: xcode7.0

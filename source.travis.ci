@@ -3,3 +3,4 @@
 for file in ./*.zsh; do
  . $file
 done
+exit 0;

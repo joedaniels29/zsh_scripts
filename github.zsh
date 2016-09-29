@@ -14,6 +14,11 @@ gh_commit_push_publish(){
        fi
 }
 
+git_be_gone(){
+    git checkout -- .
+    git clean -df
+}
+
 pod_commit_push_publish(){
     if (( $# != 2 )); then
         echo "you need a tag."

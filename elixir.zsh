@@ -14,7 +14,7 @@ phoenix_deploy(){
     cd priv/static
     git_be_gone;
     git pull origin;
-    1;
+    1;  
 
     cd $projectLocation;
 

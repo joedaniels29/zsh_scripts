@@ -88,6 +88,7 @@ gh_new_repo(){
         git_setup;
     fi
      curl -u "joedaniels29:${___gh_key}" https://api.github.com/user/repos -d "{\"name\":\"${PWD:t}\",\"description\":\"\"}"
+     git remote remove origin
      git remote add origin "git@github.com:joedaniels29/${PWD:t}.git"
      git push origin master
 }

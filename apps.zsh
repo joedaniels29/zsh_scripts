@@ -5,6 +5,7 @@ alias SH="ssh harb"
 alias G='/Users/joe/Projects/Work/glassfish4/bin/asadmin'
 alias es="ember server"
 alias atomw='atom --wait'
+alias s='swift build'
 
 alias aa=atom .
 alias a=atom --wait

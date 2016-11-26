@@ -18,17 +18,17 @@ gh_ping(){
     return $?
 }
 git_managed_update(){
-    if gh_ping{
+    if gh_ping; then
         git pull --ff-only  1> /dev/null 2>&1;
         git_managed_push_publish
-    }
+    fi
 }
 git_managed_push_publish(){
        git add .
        git commit -am "autoc: $(date +%Y-%m-%d:%H:%M:%S)"  1> /dev/null 2>&1;
-       if $?{
-        git push origin master -f
-       }
+       if (( $? == 0 )); then
+           git push origin master -f
+       fi
 }
 
 

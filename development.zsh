@@ -91,7 +91,17 @@ clear_derived_data(){
  rm -rf /Users/Joe/Library/Developer/Xcode/DerivedData
 }
 
+checksum_diff(){
+    local chk1=`cksum $1 | awk -F" " '{print $1}'`
+    local chk2=`cksum $2 | awk -F" " '{print $1}'`
 
+    if [ $chk1 -eq $chk2 ]
+    then
+      echo "File is identical"
+    else
+      echo "File is not identical"
+    fi
+}
 
 current_host_platform(){
  if [[ "$(uname)" == "Darwin" ]]; then
@@ -101,4 +111,16 @@ current_host_platform(){
   elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
     echo "win"
   fi
+}
+
+
+
+
+
+synchronize_defaults(){
+    cd ~/Library/Preferences;
+    for f (IntelliJIdea2016.2 AppCode2016.2 AppCode2016.3); do
+        
+    done
+
 }

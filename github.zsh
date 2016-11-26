@@ -13,18 +13,21 @@ gh_commit_push_publish(){
            git push origin master --tags;
        fi
 }
+gh_ping(){
+    ping -c 1 github.com >& /dev/null
+    return $?
+}
 git_managed_update(){
-    git pull
+    if gh_ping{
+        git pull --ff-only;
+        git_managed_push_publish
+    }
 }
 git_managed_push_publish(){
        git add .
        git commit -am "autoc: $(date +%Y-%m-%d:%H:%M:%S)";
-
+       
        git push origin master -f
-       if (( $# == 2 )); then
-           git tag -a $2 -m "$2"
-           git push origin master --tags;
-       fi
 }
 
 

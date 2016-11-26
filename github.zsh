@@ -14,20 +14,21 @@ gh_commit_push_publish(){
        fi
 }
 gh_ping(){
-    ping -c 1 github.com >& /dev/null
+    ping -c 1 github.com  1> /dev/null 2>&1
     return $?
 }
 git_managed_update(){
     if gh_ping{
-        git pull --ff-only;
+        git pull --ff-only  1> /dev/null 2>&1;
         git_managed_push_publish
     }
 }
 git_managed_push_publish(){
        git add .
-       git commit -am "autoc: $(date +%Y-%m-%d:%H:%M:%S)";
-       
-       git push origin master -f
+       git commit -am "autoc: $(date +%Y-%m-%d:%H:%M:%S)"  1> /dev/null 2>&1;
+       if $?{
+        git push origin master -f
+       }
 }
 
 

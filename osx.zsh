@@ -15,6 +15,8 @@ swiftBuild(){
     if [[ -z ./Package.swift ]]; then
         echo 'wheres the Package.swift?'
     fi
+    if [[ $1 == "hard" ]]; then
     rm -rf Packages;
+    fi
     swift build;
 }

@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/usr/bin/env zsh
 
 for file in ./*.zsh; do
  shellcheck $file

@@ -3,6 +3,17 @@ npm_commit_push_publish(){
     npm publish ./
 }
 
+
+git_ignore_add(){
+    if [[ -f .gitignore ]]; then
+        echo $* >> .gitignore
+        git rm -rf --cached $*
+        gh_commit_push_publish "gitignore: $*"
+    else
+
+    fi
+}
+
 gh_commit_push_publish(){
        git add .
        git commit -am $1;
@@ -17,6 +28,17 @@ gh_ping(){
     ping -c 1 github.com  1> /dev/null 2>&1
     return $?
 }
+git_each_update_or_overwrite(){
+        while read i
+        do
+            local segments=(${(s. .)i});
+            local folder=${segments[1]};
+            into $folder;
+            git_managed_update
+      done < $SCRIPTS_FOLDER/managed_git_list
+}
+
+
 git_managed_update(){
     if gh_ping; then
         git pull --ff-only  1> /dev/null 2>&1;

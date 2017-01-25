@@ -7,6 +7,22 @@ tf_version(){
      python -c 'import tensorflow as tf; print(tf.__version__)'
 }
 
+tf_syntax_net(){
+    tf_checkout
+    cd models/syntaxnet/tensorflow
+    ./configure
+     cd ..
+     bazel test --linkopt=-headerpad_max_install_names \
+        syntaxnet/... util/utf8/...
+}
+
+tf_checkout(){
+    tf_activate
+    cd $MY_PROJECTS_FOLDER;
+    rm -rf ./models
+    git clone --recursive https://github.com/tensorflow/models.git
+}
+
 tf_im2txt(){
     tf_activate
 # Directory containing model checkpoints.

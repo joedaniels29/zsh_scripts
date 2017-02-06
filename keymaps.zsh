@@ -1,6 +1,7 @@
 # Widgetize
 bindkey -s '\er\ef' 'rm -rf '
 
+bindkey -s '\eW' '^A^kexit ^M'
 
 
 # Bindings

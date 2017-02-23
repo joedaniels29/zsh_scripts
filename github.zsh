@@ -251,6 +251,37 @@ git-all(){
 git-check(){
   git-all "if [[ $0  -eq 1 ]]; then echo 'dirty'; fi "
 }
+git-has-remote-branch(){
+    local hasRemote=$(git ls-remote --heads origin $1 | wc -l)
+    if [[ hasRemote -eq 1 ]]; then
+        return 0;
+    else
+        return 1
+    fi
+
+}
+git-rebase-all-onto(){
+   local onto=$1;
+   shift;
+    for x in  $* ; do
+        echo REBASE $x
+        git checkout $x;
+        git rebase $onto;
+        if [[ $? -ne 0 ]]; then
+            inline_source_tree
+        fi
+        git-has-remote-branch $x
+        if [[ $? -eq 0 ]]; then
+            git push -f origin $x
+        fi
+    done
+    git checkout $onto;
+}
+
+inline_source_tree(){
+    /Applications/SourceTree.app/Contents/MacOS/SourceTree
+}
+
 git-check-list(){
     autoload colors; colors;
     print -n  $(git-all "eval \"$*\";"  'if [[ $?  -ne 0 ]]; then; print -n $fg_bold[blue] `pwd`(:t) ${reset_color}; else; print -n $fg[white] `pwd`(:t) ${reset_color}; fi;')

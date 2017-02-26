@@ -1,4 +1,4 @@
-#!/usr/local/bin/zsh
+#!/usr/bin/env zsh
 
 cd ~;
 git clone --recursive https://github.com/joedaniels29/prezto.git "/Users/travis/.zprezto";

@@ -17,9 +17,8 @@ xc_new_framework(){
     if (( $# == 1 ));
     then
         cd $MY_PROJECTS_FOLDER;
-        git clone https://github.com/joedaniels29/FrameworkTemplate.git $1;
-        if (( $? == 0 )); then
-            cd $1;
+        if git clone https://github.com/joedaniels29/FrameworkTemplate.git $1; then
+            cd "$1" || exit;
             ./rename-project.sh $1
             rm -f ./rename-project.sh
             rm -rf .git;

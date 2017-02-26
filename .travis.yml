@@ -15,7 +15,7 @@ matrix:
     - os: linux
       sudo: required
       env:  ZSH_VERSION=5.2
-    - os: linux,
+    - os: linux
       sudo: required
       env:  ZSH_VERSION=5.1
 

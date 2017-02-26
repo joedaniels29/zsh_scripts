@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 
 rails_apps=(
 /Users/joe/Projects/Work/resident-worklist/

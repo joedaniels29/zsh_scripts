@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 file_size(){
     # wc -c $1 | awk '{print $1}'
     ruby -e "puts '%d' % (File.size(\"$1\"))"

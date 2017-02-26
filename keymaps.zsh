@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Widgetize
 bindkey -s '\er\ef' 'rm -rf '
 

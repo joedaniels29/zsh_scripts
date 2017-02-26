@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 
 function kill_rails(){
   if [[ -a tmp/pids/server.pid ]]; then

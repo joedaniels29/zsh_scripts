@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # local me hopkins;
 # me="Hi Me!😅";
 # hopkins="Hopkins🏥";

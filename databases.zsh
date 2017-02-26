@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 create_db_stack(){
   createuser $1
   if (($# > 1)); then

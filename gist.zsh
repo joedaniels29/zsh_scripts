@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 gistURL(){
     local x;
     x=$(gist $1);

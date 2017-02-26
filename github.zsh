@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 npm_commit_push_publish(){
     gh_commit_push_publish $*
     npm publish ./

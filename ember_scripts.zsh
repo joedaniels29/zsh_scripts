@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 ember_apps=(
 /Users/joe/Projects/Work/resident-worklist/frontend
 /Users/joe/Projects/Work/ReachSearch/frontend

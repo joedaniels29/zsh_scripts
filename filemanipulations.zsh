@@ -1,3 +1,6 @@
+#!/usr/bin/env zsh
+
+
 send_to_server(){
  local archive_name=$1.tar.gz
  rm -rf $archive_name;

@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 osx_update_list(){
     softwareupdate -l;
 }

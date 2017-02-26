@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 checkEnvironment(){
   # todo: open postgres if its not already open?
   if ! pgrep postgress >& - ; then

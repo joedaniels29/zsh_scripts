@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 isw(){
     local pee=$( pwd );
     echo -n && sleep 3 && echo "import ${pee:t}" && cat | swift -deprecated-integrated-repl   -I $pee

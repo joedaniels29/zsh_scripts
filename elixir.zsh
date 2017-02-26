@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 ember_phoenix_deploy(){
     ssh home "echo ohai"
 }
@@ -14,7 +15,7 @@ phoenix_deploy(){
     cd priv/static
     git_be_gone;
     git pull origin;
-    1;  
+    1;
 
     cd $projectLocation;
 

@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 tf_activate(){
     source ~/Projects/Mine/tensorflow/bin/activate
 }

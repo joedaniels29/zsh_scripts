@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 close_devlelopment(){
     killall rails  &>/dev/null;
     killall ember  &>/dev/null;

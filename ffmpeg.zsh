@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 ffmpeg_reset_times(){
      ffmpeg -i $1 -write_xing 0 -c:v copy -c:a copy $2
 }

@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # Customize to your needs...
 alias ss=sublime
 alias g=git

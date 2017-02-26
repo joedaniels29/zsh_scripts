@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 function zsh_reinit(){
   . ~/.zshrc
 }

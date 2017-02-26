@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 mongo_display(){
     local var=$*;
     ssh -T stitch <<EOSSH

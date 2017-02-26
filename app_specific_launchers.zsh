@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # OASIS Launchers
 sOASe(){
  sServerE "${WORK_PROJECTS_FOLDER}/Oasis" 326

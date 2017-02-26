@@ -1,4 +1,4 @@
-
+#!/usr/bin/env zsh
 
 function VmOpp(){
     vmrun
@@ -120,7 +120,7 @@ current_host_platform(){
 synchronize_defaults(){
     cd ~/Library/Preferences;
     for f (IntelliJIdea2016.2 AppCode2016.2 AppCode2016.3); do
-        
+
     done
 
 }
